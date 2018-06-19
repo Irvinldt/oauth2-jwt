@@ -3,6 +3,7 @@ package sv.com.inventario.controladores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import sv.com.inventario.controladores.dto.request.InventarioRequestDTO;
@@ -41,6 +42,7 @@ public class InventarioController {
 	}
 
 	@PostMapping(value = "/")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<?> guar(@RequestBody InventarioRequestDTO request) {
 		try {
 			return new ResponseEntity<>(inventariodtoService.guarInventario(request), HttpStatus.OK);

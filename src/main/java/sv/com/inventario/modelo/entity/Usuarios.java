@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuarios {
+public class Usuarios extends AbstractBaseEntity{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
